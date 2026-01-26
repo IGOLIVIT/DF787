@@ -83,9 +83,8 @@ struct GameContainerView: View {
         lastResult = result
         gameManager.updateProgress(for: gameType, difficulty: difficulty, level: currentLevel, result: result)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            showingResult = true
-        }
+        // Show result immediately to avoid "Processing..." state
+        showingResult = true
     }
 }
 

@@ -284,7 +284,7 @@ struct SignalDivideGame: View {
         case .showingRule: return "Learn the Rule"
         case .countdown: return "Get Ready!"
         case .playing: return "Tap the Correct Zone"
-        case .result: return "Processing..."
+        case .result: return "Complete!"
         }
     }
     
@@ -294,7 +294,7 @@ struct SignalDivideGame: View {
         case .showingRule: return "Remember which signals go where"
         case .countdown: return "Signals incoming..."
         case .playing: return "Signal \(currentSignalIndex + 1) of \(signalCount)"
-        case .result: return ""
+        case .result: return "Loading results..."
         }
     }
     

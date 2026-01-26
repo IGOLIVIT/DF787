@@ -152,7 +152,7 @@ struct TimingGateGame: View {
         case .ready: return "Timing Gate"
         case .countdown: return "Get Ready"
         case .playing: return "Tap When Aligned"
-        case .result: return "Processing..."
+        case .result: return "Complete!"
         }
     }
     
@@ -161,7 +161,7 @@ struct TimingGateGame: View {
         case .ready: return "Release energy at the perfect moment"
         case .countdown: return "Gates appearing in..."
         case .playing: return "Gate \(currentGate + 1) of \(gateCount)"
-        case .result: return ""
+        case .result: return "Loading results..."
         }
     }
     
