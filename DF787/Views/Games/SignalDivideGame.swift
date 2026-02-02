@@ -294,7 +294,7 @@ struct SignalDivideGame: View {
         case .showingRule: return "Remember which signals go where"
         case .countdown: return "Signals incoming..."
         case .playing: return "Signal \(currentSignalIndex + 1) of \(signalCount)"
-        case .result: return "Loading results..."
+        case .result: return "Complete!"
         }
     }
     

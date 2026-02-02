@@ -155,7 +155,7 @@ struct PatternSurgeGame: View {
         case .countdown: return "Pattern starts in..."
         case .showing: return "Showing \(showingSymbolIndex + 1) of \(patternLength)"
         case .input: return "\(playerInput.count) of \(patternLength) entered"
-        case .result: return "Loading results..."
+        case .result: return "Complete!"
         }
     }
     

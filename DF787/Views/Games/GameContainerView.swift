@@ -81,10 +81,9 @@ struct GameContainerView: View {
     
     private func handleGameComplete(_ result: LevelResult) {
         lastResult = result
-        gameManager.updateProgress(for: gameType, difficulty: difficulty, level: currentLevel, result: result)
-        
-        // Show result immediately to avoid "Processing..." state
+        // Show overlay first so it's visible on iPad before any GameManager re-renders
         showingResult = true
+        gameManager.updateProgress(for: gameType, difficulty: difficulty, level: currentLevel, result: result)
     }
 }
 
@@ -151,8 +150,9 @@ struct GameResultOverlay: View {
     let onContinue: () -> Void
     let onExit: () -> Void
     
-    @State private var scale: CGFloat = 0.5
-    @State private var opacity: Double = 0
+    // Start visible so overlay always shows on iPad (onAppear can be unreliable in fullScreenCover)
+    @State private var scale: CGFloat = 1.0
+    @State private var opacity: Double = 1.0
     
     private var isComplete: Bool {
         currentLevel >= totalLevels && result.success
@@ -253,7 +253,10 @@ struct GameResultOverlay: View {
             .padding(.horizontal, 24)
         }
         .onAppear {
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+            // Subtle entrance; overlay already visible (avoids infinite "Processing..." on iPad if onAppear didn't run)
+            scale = 0.98
+            opacity = 0.98
+            withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
                 scale = 1.0
                 opacity = 1.0
             }
